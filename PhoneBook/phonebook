@@ -28,7 +28,15 @@ case $1 in
 "-i")
 	read -p "please insert the new contact name: " cname
 	read -p "please insert the new contact number: " cnum
-	echo $cname  $cnum >> .phonebookDB.txt;;	
+	read -p "Does the contact have another phone number [y/n]?: " choice
+	if [ $choice = "y" ]
+	then
+	read -p "please insert the new  number: " cnum2
+	echo $cname  $cnum $cnum2 >> .phonebookDB.txt
+	else
+	echo $cname  $cnum >> .phonebookDB.txt
+	fi
+;;	
 
 "-v")
 	cat .phonebookDB.txt;;
